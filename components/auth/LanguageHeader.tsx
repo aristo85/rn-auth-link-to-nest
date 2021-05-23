@@ -1,7 +1,8 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { string } from "yup/lib/locale";
 import colors from "../../constants/colors";
-import { setObject } from "../../data/localStorage";
+import { setObject, setValue } from "../../data/localStorage";
 import { setLanguage } from "../../redux/env/envSlice";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { ButtonSyled } from "../ButtonSyled";
@@ -23,9 +24,7 @@ const LanguageHeader = () => {
           bodyStyle={styles.langBtn}
           textStyle={styles.langTxt}
           onPress={async () => {
-            await setObject("language", {
-              language: language === "ku" ? "en" : "ku",
-            });
+            await setValue("language", language === "ku" ? "en" : "ku");
             dispatch(setLanguage(language === "ku" ? "en" : "ku"));
           }}
         >
@@ -48,7 +47,7 @@ const LanguageHeader = () => {
               height: 18,
               width: 30,
               borderRadius: 6,
-              margin: 0
+              margin: 0,
               // marginHorizontal: 2,
             }}
           />
@@ -74,6 +73,6 @@ const styles = StyleSheet.create({
     color: colors.third,
     marginTop: 1,
     marginBottom: 0,
-    marginHorizontal: 3
+    marginHorizontal: 3,
   },
 });

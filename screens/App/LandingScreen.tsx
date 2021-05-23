@@ -4,7 +4,6 @@ import { ButtonSyled } from "../../components/ButtonSyled";
 import { getObject } from "../../data/localStorage";
 import { AppRoutes } from "../../navigation/routes";
 import { AppNavigationProp } from "../../navigation/types";
-import { setLogOut } from "../../redux/env/envSlice";
 import { logOut } from "../../redux/env/thunk/auth";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 
@@ -25,7 +24,7 @@ const LandingScreen: React.FC<LandingScreenProps> = () => {
 
   return (
     <View>
-      <Text>Hello {user.user.name}</Text>
+      <Text>Hello {user.user?.name}</Text>
       <ButtonSyled
         bodyStyle=""
         textStyle=""

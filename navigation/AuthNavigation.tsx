@@ -41,9 +41,6 @@ export const AuthNavigation = () => {
           cardStyle: { backgroundColor: colors.secondary },
           headerLeft: () => null,
           headerTitle: translation.register,
-          // gestureEnabled: false
-          // headerBackTitleVisible: true
-          // headerBackAccessibilityLabel: 'ok'
         }}
       />
       <AuthStack.Screen
@@ -62,7 +59,7 @@ export const AuthNavigation = () => {
         options={{
           headerTintColor: colors.secondary,
           cardStyle: { backgroundColor: colors.secondary },
-          // headerLeft: () => null,
+          headerLeft: () => null,
           headerTitle: translation["login-option"],
         }}
       />

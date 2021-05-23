@@ -5,8 +5,11 @@ import Card from "../../components/Card";
 import TextTitle from "../../components/TextTitle";
 import colors from "../../constants/colors";
 import useTranslation from "../../data/languages/translateLanguage";
+import { getObject, getValue } from "../../data/localStorage";
 import { AuthRoutes } from "../../navigation/routes";
 import { AuthNavigationProp } from "../../navigation/types";
+import { setLanguage } from "../../redux/env/envSlice";
+import { useReduxDispatch } from "../../redux/hooks";
 
 type MainScreenProps = {
   navigation: AuthNavigationProp<AuthRoutes.Main>;
@@ -15,16 +18,10 @@ type MainScreenProps = {
 const Main: React.FC<MainScreenProps> = (props) => {
   const translation = useTranslation();
 
-  useEffect(()=>{
+  const dispatch = useReduxDispatch();
+
+  useEffect(() => {
     const backAction = () => {
-      // Alert.alert("Hold on!", "Are you sure you want to go back?", [
-      //   {
-      //     text: "Cancel",
-      //     onPress: () => null,
-      //     style: "cancel"
-      //   },
-      //   { text: "YES", onPress: () => BackHandler.exitApp() }
-      // ]);
       return true;
     };
 
@@ -32,9 +29,14 @@ const Main: React.FC<MainScreenProps> = (props) => {
       "hardwareBackPress",
       backAction
     );
+    const getLanguage = async () => {
+      const language: any = await getValue("language");
+      language && dispatch(setLanguage(language));
+    };
+    getLanguage();
 
     return () => backHandler.remove();
-  },[])
+  }, []);
 
   return (
     <View style={styles.container}>
