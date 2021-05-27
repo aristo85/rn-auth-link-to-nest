@@ -1,11 +1,10 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { string } from "yup/lib/locale";
 import colors from "../../constants/colors";
 import { setObject, setValue } from "../../data/localStorage";
 import { setLanguage } from "../../redux/env/envSlice";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
-import { ButtonSyled } from "../ButtonSyled";
+import { ButtonWithComponent } from "../ButtonWithComponent";
 import TextTitle from "../TextTitle";
 
 const LanguageHeader = () => {
@@ -20,7 +19,7 @@ const LanguageHeader = () => {
           //   alignSelf: "center",
         }}
       >
-        <ButtonSyled
+        <ButtonWithComponent
           bodyStyle={styles.langBtn}
           textStyle={styles.langTxt}
           onPress={async () => {
@@ -51,7 +50,7 @@ const LanguageHeader = () => {
               // marginHorizontal: 2,
             }}
           />
-        </ButtonSyled>
+        </ButtonWithComponent>
       </View>
     ),
   };

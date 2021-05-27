@@ -17,6 +17,7 @@ import { useReduxDispatch } from "../../redux/hooks";
 import { facebookAuth } from "../../redux/env/thunk/auth";
 import { FacebookAuthData } from "../../redux/env/types";
 import MyAlert from "../MyAlert";
+import { ButtonWithComponent } from "../ButtonWithComponent";
 
 type FacebookLoginProps = {
   setisLoading: (param: boolean) => void;
@@ -74,14 +75,14 @@ const FacebookLogin: React.FC<FacebookLoginProps> = (props) => {
 
   return (
     <View>
-      <ButtonSyled
+      <ButtonWithComponent
         bodyStyle={styles.fbBtn}
         onPress={() => onFacebookLogin()}
         textStyle={styles.fbBtnTxt}
       >
         <FontAwesome name="facebook-f" size={20} color={colors.secondary} />
         {"  " + translation["reg-fb"]}
-      </ButtonSyled>
+      </ButtonWithComponent>
       {serverErr && (
         <MyAlert
           title={translation["alert-err"]}

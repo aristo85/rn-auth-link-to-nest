@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import {
   ActivityIndicator,
   Dimensions,
-  Keyboard,
   Modal,
   StyleSheet,
-  Text,
   View,
 } from "react-native";
 import { Input } from "react-native-elements";
@@ -20,10 +18,7 @@ import Card from "../Card";
 import MyAlert from "../MyAlert";
 import TextTitle from "../TextTitle";
 import * as yup from "yup";
-import {
-  ScrollView,
-  TouchableWithoutFeedback,
-} from "react-native-gesture-handler";
+import { ScrollView } from "react-native-gesture-handler";
 
 type Errmsg = "" | "pass-required" | "at-least-six" | "pass-must-match";
 
@@ -93,12 +88,8 @@ const ResetForgotPassModal: React.FC<ModalProps> = (props) => {
   };
 
   return (
-    // <TouchableWithoutFeedback
-    //   onPress={() => Keyboard.dismiss()}
-    //   containerStyle={{ flex: 1 }}
-    // >
     <Modal visible={props.isVisible && true}>
-      <ScrollView contentContainerStyle={{flex: 1}}>
+      <ScrollView contentContainerStyle={{ flex: 1 }}>
         {isLoading ? (
           <ActivityIndicator
             size="large"
@@ -180,7 +171,6 @@ const ResetForgotPassModal: React.FC<ModalProps> = (props) => {
         />
       )}
     </Modal>
-    // </TouchableWithoutFeedback>
   );
 };
 

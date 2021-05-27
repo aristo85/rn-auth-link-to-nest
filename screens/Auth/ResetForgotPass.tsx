@@ -4,7 +4,6 @@ import {
   Dimensions,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from "react-native";
 import { Input } from "react-native-elements";

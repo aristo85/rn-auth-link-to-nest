@@ -1,24 +1,23 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Button } from "react-native-elements";
 import colors from "../constants/colors";
 
 interface ButtonProps {
-  children: string;
+  children: any;
   onPress: () => void;
   bodyStyle: any;
   textStyle: any;
 }
 
-export const ButtonSyled: React.FC<ButtonProps> = (props) => {
+export const ButtonWithComponent: React.FC<ButtonProps> = (props) => {
   return (
-    <Button
-      {...props}
-      title={props.children}
-      buttonStyle={{ ...styles.button, ...props.bodyStyle }}
-      titleStyle={{ ...styles.buttonText, ...props.textStyle }}
-      onPress={props.onPress}
-    />
+    <TouchableOpacity {...props} onPress={props.onPress}>
+      <View style={{ ...styles.button, ...props.bodyStyle }}>
+        <Text style={{ ...styles.buttonText, ...props.textStyle }}>
+          {props.children}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 

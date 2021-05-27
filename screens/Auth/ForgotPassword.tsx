@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import {
   ActivityIndicator,
   Dimensions,
-  Keyboard,
+  ScrollView,
   StyleSheet,
+  View,
 } from "react-native";
-import { Input } from "react-native-elements";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Button, Input } from "react-native-elements";
 import { ButtonSyled } from "../../components/ButtonSyled";
 import Card from "../../components/Card";
 import MyAlert from "../../components/MyAlert";
@@ -52,13 +52,13 @@ const ForgotPassword: React.FC<ForgotPassScreenProps> = (props) => {
       const isValid = await schema.isValid({
         ...confiramtionEmail,
       });
-      
+
       if (isValid) {
         setValidErrors({ path: "", message: "" });
         const response = await dispatch(forgotPassword(confiramtionEmail));
 
         if (forgotPassword.fulfilled.match(response)) {
-          props.navigation.navigate(AuthRoutes.ResetForgotPass)
+          props.navigation.navigate(AuthRoutes.ResetForgotPass);
         } else {
           setisLoading(false);
           setserverErr(response.payload);
@@ -83,10 +83,7 @@ const ForgotPassword: React.FC<ForgotPassScreenProps> = (props) => {
       style={styles.spiner}
     />
   ) : (
-    <TouchableWithoutFeedback
-      onPress={() => Keyboard.dismiss()}
-      containerStyle={styles.container}
-    >
+    <ScrollView contentContainerStyle={styles.container}>
       <TextBody style={styles.title}>
         {translation["forgot-pass-info-text-1"]}
       </TextBody>
@@ -112,6 +109,8 @@ const ForgotPassword: React.FC<ForgotPassScreenProps> = (props) => {
           value={email}
         />
       </Card>
+      <View>
+      </View>
       <ButtonSyled
         bodyStyle={
           Dimensions.get("window").width > 600
@@ -136,7 +135,7 @@ const ForgotPassword: React.FC<ForgotPassScreenProps> = (props) => {
           onCancel={() => setserverErr(undefined)}
         />
       )}
-    </TouchableWithoutFeedback>
+    </ScrollView>
   );
 };
 
