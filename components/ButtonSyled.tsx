@@ -11,7 +11,7 @@ interface ButtonProps {
 
 export const ButtonSyled: React.FC<ButtonProps> = (props) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity {...props} onPress={props.onPress}>
       <View style={{ ...styles.button, ...props.bodyStyle }}>
         <Text style={{ ...styles.buttonText, ...props.textStyle }}>
           {props.children}

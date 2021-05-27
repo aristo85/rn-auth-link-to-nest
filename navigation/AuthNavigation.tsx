@@ -20,7 +20,8 @@ export const AuthNavigation = () => {
   return (
     <AuthStack.Navigator
       screenOptions={{
-        headerTintColor: Platform.OS === "android" ? "white" : colors.secondary,
+        headerTintColor:
+          Platform.OS === "android" ? colors.secondary : colors.third,
         headerStyle: {
           backgroundColor:
             Platform.OS === "android" ? colors.third : colors.secondary,
@@ -36,9 +37,6 @@ export const AuthNavigation = () => {
         name={AuthRoutes.Registeration}
         component={Registeration}
         options={{
-          headerTintColor: colors.secondary,
-          // headerStyle: { backgroundColor: colors.third },
-          cardStyle: { backgroundColor: colors.secondary },
           headerLeft: () => null,
           headerTitle: translation.register,
         }}
@@ -47,9 +45,6 @@ export const AuthNavigation = () => {
         name={AuthRoutes.Login}
         component={Login}
         options={{
-          headerTintColor: colors.secondary,
-          cardStyle: { backgroundColor: colors.secondary },
-          // headerLeft: () => null,
           headerTitle: translation.login,
         }}
       />
@@ -57,8 +52,6 @@ export const AuthNavigation = () => {
         name={AuthRoutes.HowToLogin}
         component={HowToLogin}
         options={{
-          headerTintColor: colors.secondary,
-          cardStyle: { backgroundColor: colors.secondary },
           headerLeft: () => null,
           headerTitle: translation["login-option"],
         }}
@@ -67,9 +60,6 @@ export const AuthNavigation = () => {
         name={AuthRoutes.ForgotPassword}
         component={ForgotPassword}
         options={{
-          headerTintColor: colors.secondary,
-          cardStyle: { backgroundColor: colors.secondary },
-          // headerLeft: () => null,
           headerTitle: translation["forgot-pass"],
         }}
       />
@@ -77,9 +67,6 @@ export const AuthNavigation = () => {
         name={AuthRoutes.ResetForgotPass}
         component={ResetForgotPass}
         options={{
-          headerTintColor: colors.secondary,
-          cardStyle: { backgroundColor: colors.secondary },
-          // headerLeft: () => null,
           headerTitle: translation["reset-code-forgot-pass"],
         }}
       />

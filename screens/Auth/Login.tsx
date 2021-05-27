@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  ActivityIndicator,
-  Dimensions,
-  Keyboard,
-  StyleSheet,
-} from "react-native";
+import { ActivityIndicator, Dimensions, StyleSheet, View } from "react-native";
 import { Input } from "react-native-elements";
 import { ButtonSyled } from "../../components/ButtonSyled";
 import Card from "../../components/Card";
@@ -15,10 +10,7 @@ import { AuthNavigationProp } from "../../navigation/types";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import * as yup from "yup";
 import useTranslation from "../../data/languages/translateLanguage";
-import {
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from "react-native-gesture-handler";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { requestLogin } from "../../redux/env/thunk/auth";
 import MyAlert from "../../components/MyAlert";
 import TextTitle from "../../components/TextTitle";
@@ -91,10 +83,7 @@ const Login: React.FC<LoginScreenProps> = (props) => {
       style={styles.spiner}
     />
   ) : (
-    <TouchableWithoutFeedback
-      onPress={() => Keyboard.dismiss()}
-      containerStyle={styles.container}
-    >
+    <ScrollView contentContainerStyle={styles.container}>
       <Card
         style={
           Dimensions.get("window").width > 600
@@ -128,17 +117,20 @@ const Login: React.FC<LoginScreenProps> = (props) => {
           value={password}
         />
       </Card>
-      <ButtonSyled
-        bodyStyle={
-          Dimensions.get("window").width > 600
-            ? { ...media.btnB }
-            : { ...media.btn }
-        }
-        textStyle={""}
-        onPress={async () => handleLogin()}
-      >
-        {translation.login}
-      </ButtonSyled>
+      <View>
+        <ButtonSyled
+          bodyStyle={
+            Dimensions.get("window").width > 600
+              ? { ...media.btnB }
+              : { ...media.btn }
+          }
+          textStyle={""}
+          onPress={async () => handleLogin()}
+        >
+          {translation.login}
+        </ButtonSyled>
+      </View>
+
       <TouchableOpacity
         style={styles.loginLink}
         onPress={() => props.navigation.navigate(AuthRoutes.ForgotPassword)}
@@ -160,7 +152,7 @@ const Login: React.FC<LoginScreenProps> = (props) => {
           onCancel={() => setserverErr(undefined)}
         />
       )}
-    </TouchableWithoutFeedback>
+    </ScrollView>
   );
 };
 

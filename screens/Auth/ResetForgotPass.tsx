@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   ActivityIndicator,
   Dimensions,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -47,7 +48,7 @@ const ResetForgotPass = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView contentContainerStyle={{ flex: 1 }}>
       {isLoading ? (
         <ActivityIndicator
           size="large"
@@ -104,7 +105,7 @@ const ResetForgotPass = () => {
         isVisible={confirmCodeModal}
         setVisible={setconfirmCodeModal}
       />
-    </View>
+    </ScrollView>
   );
 };
 
